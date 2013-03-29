@@ -18,11 +18,19 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>4E735E86-4A11-42ED-A01D-86FFE0FB7E09</string>
+				<string>C2B480F5-BA0C-4695-8D5E-9992839F65CE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>38E6B4AF-AAF7-4DDA-90B2-08FC924C2CE7</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Reveal in Finder</string>
 			</dict>
 		</array>
 		<key>76ED402A-138E-4714-8B00-C470579950FE</key>
@@ -47,42 +55,6 @@
 	<string>Source Tree</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict/>
-			<key>type</key>
-			<string>alfred.workflow.action.browseinalfred</string>
-			<key>uid</key>
-			<string>8B74B3B5-ED11-4B5E-9567-2C95E6B59F0B</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>applescript</key>
-				<string>on alfred_script(q)	activate application "SourceTree"	tell application "System Events"		tell process "SourceTree"			keystroke "b" using command down				set value of text field 1 of group 1 of tool bar 1 of window "Bookmarks" to q as text			click button 1 of text field 1 of group 1 of tool bar 1 of window "Bookmarks"			set frontmost to true		end tell	end tellend alfred_script</string>
-				<key>cachescript</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.applescript</string>
-			<key>uid</key>
-			<string>DB55BBC7-595C-4E83-ABBE-60355155A4B3</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>4</integer>
-				<key>script</key>
-				<string>open -a SourceTree "{query}";</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>4E735E86-4A11-42ED-A01D-86FFE0FB7E09</string>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -112,6 +84,25 @@
 		</dict>
 		<dict>
 			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>8B74B3B5-ED11-4B5E-9567-2C95E6B59F0B</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/SourceTree.app</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>C2B480F5-BA0C-4695-8D5E-9992839F65CE</string>
+		</dict>
+		<dict>
+			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
@@ -129,15 +120,34 @@
 			<key>uid</key>
 			<string>76ED402A-138E-4714-8B00-C470579950FE</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)	activate application "SourceTree"	tell application "System Events"		tell process "SourceTree"			keystroke "b" using command down				set value of text field 1 of group 1 of tool bar 1 of window "Bookmarks" to q as text			click button 1 of text field 1 of group 1 of tool bar 1 of window "Bookmarks"			set frontmost to true		end tell	end tellend alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>DB55BBC7-595C-4E83-ABBE-60355155A4B3</string>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.action.revealfile</string>
+			<key>uid</key>
+			<string>38E6B4AF-AAF7-4DDA-90B2-08FC924C2CE7</string>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>4E735E86-4A11-42ED-A01D-86FFE0FB7E09</key>
+		<key>38E6B4AF-AAF7-4DDA-90B2-08FC924C2CE7</key>
 		<dict>
 			<key>ypos</key>
-			<real>190</real>
+			<real>360</real>
 		</dict>
 		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
 		<dict>
@@ -147,17 +157,22 @@
 		<key>76ED402A-138E-4714-8B00-C470579950FE</key>
 		<dict>
 			<key>ypos</key>
-			<real>310</real>
+			<real>500</real>
 		</dict>
 		<key>8B74B3B5-ED11-4B5E-9567-2C95E6B59F0B</key>
 		<dict>
 			<key>ypos</key>
-			<real>40</real>
+			<real>10</real>
+		</dict>
+		<key>C2B480F5-BA0C-4695-8D5E-9992839F65CE</key>
+		<dict>
+			<key>ypos</key>
+			<real>170</real>
 		</dict>
 		<key>DB55BBC7-595C-4E83-ABBE-60355155A4B3</key>
 		<dict>
 			<key>ypos</key>
-			<real>390</real>
+			<real>530</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

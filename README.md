@@ -8,12 +8,16 @@ Alfred 2 Workflow to list, search, and open [Source Tree](http://www.sourcetreea
 ### A. Keywords:
 
 1. `st`: List and query source tree repositories.
-3. `stbookmark`: Open query to source bookmark window.
+
+    Feedbacks are cached. use `st ! {query}` to refresh.
+
+2. `stbookmark`: Open query to source bookmark window.
 
 
 ### B. Modifier Key
 
-4. `alt` : Browser in Alfred
+1. `⌘` : Reveal in Finder
+1. `alt` : Browser in Alfred
 
 
 

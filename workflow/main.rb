@@ -7,7 +7,7 @@
 # HomePage       : https://github.com/zhaocai/alfred2-sourcetree-workflow
 # Version        : 0.1
 # Date Created   : Sun 10 Mar 2013 09:59:48 PM EDT
-# Last Modified  : Fri 29 Mar 2013 04:54:19 AM EDT
+# Last Modified  : Fri 29 Mar 2013 09:52:06 AM EDT
 # Tag            : [ ruby, alfred, workflow ]
 # Copyright      : © 2013 by Zhao Cai,
 #                  Released under current GPL license.
@@ -59,6 +59,7 @@ def generate_feedback(alfred, query)
     })
   }
 
+  feedback.put_cached_feedback
   puts feedback.to_alfred(query)
 end
 
@@ -71,12 +72,32 @@ module Alfred
   end
 end
 
+
+def cached_feedback(alfred)
+  if !ARGV.empty? && ARGV[0].eql?('!')
+    ARGV.shift
+    return nil
+  end
+  alfred.feedback.get_cached_feedback
+end
+
 if __FILE__ == $PROGRAM_NAME
 
   Alfred.with_friendly_error do |alfred|
     alfred.with_rescue_feedback = true
-    query = ARGV.join(" ").strip
-    generate_feedback(alfred, query)
+
+    alfred.with_cached_feedback do
+      use_cache_file :expire => 3600
+    end
+
+    if feedback = cached_feedback(alfred)
+      query = ARGV.join(" ").strip
+      puts feedback.to_alfred(query)
+    else
+      query = ARGV.join(" ").strip
+      generate_feedback(alfred, query)
+    end
+
   end
 end
 
