@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>me.zhaowu.sourcetree</string>
+	<key>connections</key>
+	<dict>
+		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8B74B3B5-ED11-4B5E-9567-2C95E6B59F0B</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Browser in Alfred</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>4E735E86-4A11-42ED-A01D-86FFE0FB7E09</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>76ED402A-138E-4714-8B00-C470579950FE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DB55BBC7-595C-4E83-ABBE-60355155A4B3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Zhao Cai</string>
+	<key>description</key>
+	<string>Get SourceTree Repository</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Source Tree</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>8B74B3B5-ED11-4B5E-9567-2C95E6B59F0B</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)	activate application "SourceTree"	tell application "System Events"		tell process "SourceTree"			keystroke "b" using command down				set value of text field 1 of group 1 of tool bar 1 of window "Bookmarks" to q as text			click button 1 of text field 1 of group 1 of tool bar 1 of window "Bookmarks"			set frontmost to true		end tell	end tellend alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>DB55BBC7-595C-4E83-ABBE-60355155A4B3</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>script</key>
+				<string>open -a SourceTree "{query}";</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>4E735E86-4A11-42ED-A01D-86FFE0FB7E09</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>62</integer>
+				<key>keyword</key>
+				<string>st</string>
+				<key>runningsubtext</key>
+				<string>search for SourceTree Repositories ...</string>
+				<key>script</key>
+				<string>/usr/bin/ruby ./main.rb {query}</string>
+				<key>subtext</key>
+				<string>Open Repository in SourceTree</string>
+				<key>title</key>
+				<string>Search SourceTree for '{query}'</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>63F60794-BB56-4415-9372-BAF974C3A7E1</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>stbookmark</string>
+				<key>subtext</key>
+				<string>in Source Tree Bookmark Window</string>
+				<key>text</key>
+				<string>Search Source Tree for '{query}'</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>76ED402A-138E-4714-8B00-C470579950FE</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>4E735E86-4A11-42ED-A01D-86FFE0FB7E09</key>
+		<dict>
+			<key>ypos</key>
+			<real>190</real>
+		</dict>
+		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
+		<dict>
+			<key>ypos</key>
+			<real>190</real>
+		</dict>
+		<key>76ED402A-138E-4714-8B00-C470579950FE</key>
+		<dict>
+			<key>ypos</key>
+			<real>310</real>
+		</dict>
+		<key>8B74B3B5-ED11-4B5E-9567-2C95E6B59F0B</key>
+		<dict>
+			<key>ypos</key>
+			<real>40</real>
+		</dict>
+		<key>DB55BBC7-595C-4E83-ABBE-60355155A4B3</key>
+		<dict>
+			<key>ypos</key>
+			<real>390</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/zhaocai/alfred2-sourcetree-workflow</string>
+</dict>
+</plist>
