@@ -7,7 +7,7 @@
 # HomePage       : https://github.com/zhaocai/alfred2-sourcetree-workflow
 # Version        : 0.1
 # Date Created   : Sun 10 Mar 2013 09:59:48 PM EDT
-# Last Modified  : Fri 29 Mar 2013 02:34:19 AM EDT
+# Last Modified  : Fri 29 Mar 2013 04:54:19 AM EDT
 # Tag            : [ ruby, alfred, workflow ]
 # Copyright      : © 2013 by Zhao Cai,
 #                  Released under current GPL license.
@@ -50,7 +50,7 @@ def generate_feedback(alfred, query)
 
   feedback = alfred.feedback
 
-  sourcetree_bookmarks.each { |b|
+  sourcetree_bookmarks.uniq {|b| b[:name] + b[:path]}.each { |b|
     feedback.add_item({
       :uid      => b[:path],
       :title    => b[:name],
@@ -63,13 +63,13 @@ def generate_feedback(alfred, query)
 end
 
 # overwrite default query matcher
-# module Alfred
-#   class Feedback::Item
-#     def match?(query)
-#       all_title_match?(query)
-#     end
-#   end
-# end
+module Alfred
+  class Feedback::Item
+    def match?(query)
+      all_title_match?(query)
+    end
+  end
+end
 
 if __FILE__ == $PROGRAM_NAME
 
