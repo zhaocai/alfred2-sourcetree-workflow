@@ -7,7 +7,7 @@
 # HomePage       : https://github.com/zhaocai/alfred2-sourcetree-workflow
 # Version        : 0.1
 # Date Created   : Sun 10 Mar 2013 09:59:48 PM EDT
-# Last Modified  : Fri 29 Mar 2013 09:52:06 AM EDT
+# Last Modified  : Fri 29 Mar 2013 11:56:38 PM EDT
 # Tag            : [ ruby, alfred, workflow ]
 # Copyright      : © 2013 by Zhao Cai,
 #                  Released under current GPL license.
@@ -24,6 +24,8 @@ def sourcetree_bookmarks
 
   sourcetree_plist = File.expand_path(
     "~/Library/Application Support/SourceTree/browser.plist")
+  raise IOError, "#{sourcetree_plist} does not exists." unless File.exist? sourcetree_plist
+
   bookmarks_plist = Plist::parse_xml(
     %x{plutil -convert xml1 -o - "#{sourcetree_plist}"})
 
