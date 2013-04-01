@@ -7,7 +7,7 @@
 # HomePage       : https://github.com/zhaocai/alfred2-sourcetree-workflow
 # Version        : 0.1
 # Date Created   : Sun 10 Mar 2013 09:59:48 PM EDT
-# Last Modified  : Fri 29 Mar 2013 11:56:38 PM EDT
+# Last Modified  : Mon 01 Apr 2013 05:56:01 AM EDT
 # Tag            : [ ruby, alfred, workflow ]
 # Copyright      : © 2013 by Zhao Cai,
 #                  Released under current GPL license.
@@ -58,6 +58,7 @@ def generate_feedback(alfred, query)
       :title    => b[:name],
       :subtitle => b[:path],
       :arg      => b[:path],
+      :type     => 'file',
     })
   }
 

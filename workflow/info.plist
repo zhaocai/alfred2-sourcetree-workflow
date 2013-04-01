@@ -33,11 +33,33 @@
 				<string>Reveal in Finder</string>
 			</dict>
 		</array>
+		<key>6D8D55CB-5416-4EE8-90D5-3E92CA4C24A2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C2B480F5-BA0C-4695-8D5E-9992839F65CE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>76ED402A-138E-4714-8B00-C470579950FE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>DB55BBC7-595C-4E83-ABBE-60355155A4B3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>DECD3304-0F18-49C6-908A-82898FAAB56E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>63F60794-BB56-4415-9372-BAF974C3A7E1</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -59,7 +81,7 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>62</integer>
 				<key>keyword</key>
@@ -89,6 +111,46 @@
 			<string>alfred.workflow.action.browseinalfred</string>
 			<key>uid</key>
 			<string>8B74B3B5-ED11-4B5E-9567-2C95E6B59F0B</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>5</integer>
+				<key>hotmod</key>
+				<integer>1572864</integer>
+				<key>hotstring</key>
+				<string>G</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>DECD3304-0F18-49C6-908A-82898FAAB56E</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsmulti</key>
+				<false/>
+				<key>filetypes</key>
+				<array>
+					<string>public.folder</string>
+				</array>
+				<key>name</key>
+				<string>Open With Source Tree</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>6D8D55CB-5416-4EE8-90D5-3E92CA4C24A2</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -154,6 +216,11 @@
 			<key>ypos</key>
 			<real>190</real>
 		</dict>
+		<key>6D8D55CB-5416-4EE8-90D5-3E92CA4C24A2</key>
+		<dict>
+			<key>ypos</key>
+			<real>340</real>
+		</dict>
 		<key>76ED402A-138E-4714-8B00-C470579950FE</key>
 		<dict>
 			<key>ypos</key>
@@ -173,6 +240,11 @@
 		<dict>
 			<key>ypos</key>
 			<real>530</real>
+		</dict>
+		<key>DECD3304-0F18-49C6-908A-82898FAAB56E</key>
+		<dict>
+			<key>ypos</key>
+			<real>220</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
