@@ -76,32 +76,29 @@ module Alfred
 end
 
 
-def cached_feedback(alfred)
-  if !ARGV.empty? && ARGV[0].eql?('!')
+
+
+Alfred.with_friendly_error do |alfred|
+  alfred.with_rescue_feedback = true
+
+  alfred.with_cached_feedback do
+    use_cache_file :expire => 3600
+  end
+
+  is_refresh = false
+  if ARGV[0] == '!'
+    is_refresh = true
     ARGV.shift
-    return nil
   end
-  alfred.feedback.get_cached_feedback
-end
 
-if __FILE__ == $PROGRAM_NAME
-
-  Alfred.with_friendly_error do |alfred|
-    alfred.with_rescue_feedback = true
-
-    alfred.with_cached_feedback do
-      use_cache_file :expire => 3600
-    end
-
-    if feedback = cached_feedback(alfred)
-      query = ARGV.join(" ").strip
-      puts feedback.to_alfred(query)
-    else
-      query = ARGV.join(" ").strip
-      generate_feedback(alfred, query)
-    end
-
+  if !is_refresh and fb = alfred.feedback.get_cached_feedback
+    query = ARGV.join(" ").strip
+    puts fb.to_alfred(query)
+  else
+    query = ARGV.join(" ").strip
+    generate_feedback(alfred, query)
   end
+
 end
 
 

@@ -79,6 +79,29 @@
 	<array>
 		<dict>
 			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>8B74B3B5-ED11-4B5E-9567-2C95E6B59F0B</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/SourceTree.app</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>C2B480F5-BA0C-4695-8D5E-9992839F65CE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
@@ -103,14 +126,8 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>63F60794-BB56-4415-9372-BAF974C3A7E1</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict/>
-			<key>type</key>
-			<string>alfred.workflow.action.browseinalfred</string>
-			<key>uid</key>
-			<string>8B74B3B5-ED11-4B5E-9567-2C95E6B59F0B</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -134,6 +151,8 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>DECD3304-0F18-49C6-908A-82898FAAB56E</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -151,17 +170,16 @@
 			<string>alfred.workflow.trigger.action</string>
 			<key>uid</key>
 			<string>6D8D55CB-5416-4EE8-90D5-3E92CA4C24A2</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
-			<key>config</key>
-			<dict>
-				<key>openwith</key>
-				<string>/Applications/SourceTree.app</string>
-			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
+			<string>alfred.workflow.action.revealfile</string>
 			<key>uid</key>
-			<string>C2B480F5-BA0C-4695-8D5E-9992839F65CE</string>
+			<string>38E6B4AF-AAF7-4DDA-90B2-08FC924C2CE7</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -181,6 +199,8 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>76ED402A-138E-4714-8B00-C470579950FE</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -194,12 +214,8 @@
 			<string>alfred.workflow.action.applescript</string>
 			<key>uid</key>
 			<string>DB55BBC7-595C-4E83-ABBE-60355155A4B3</string>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.action.revealfile</string>
-			<key>uid</key>
-			<string>38E6B4AF-AAF7-4DDA-90B2-08FC924C2CE7</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -214,7 +230,7 @@
 		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
 		<dict>
 			<key>ypos</key>
-			<real>190</real>
+			<real>180</real>
 		</dict>
 		<key>6D8D55CB-5416-4EE8-90D5-3E92CA4C24A2</key>
 		<dict>
