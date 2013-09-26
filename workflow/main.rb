@@ -54,27 +54,18 @@ def generate_feedback(alfred, query)
 
   sourcetree_bookmarks.uniq {|b| b[:name] + b[:path]}.each { |b|
     feedback.add_item({
-      :uid      => b[:path],
-      :title    => b[:name],
-      :subtitle => b[:path],
-      :arg      => b[:path],
-      :type     => 'file',
+      :uid      => b[:path]          ,
+      :title    => b[:name]          ,
+      :subtitle => b[:path]          ,
+      :arg      => b[:path]          ,
+      :type     => 'file'            ,
+      :match?   => :all_title_match? ,
     })
   }
 
   feedback.put_cached_feedback
   puts feedback.to_alfred(query)
 end
-
-# overwrite default query matcher
-module Alfred
-  class Feedback::Item
-    def match?(query)
-      all_title_match?(query)
-    end
-  end
-end
-
 
 
 
