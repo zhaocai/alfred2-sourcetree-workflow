@@ -20,80 +20,85 @@ require "bundle/bundler/setup"
 require "alfred"
 
 
-def sourcetree_bookmarks
 
-  sourcetree_plist = File.expand_path(
-    "~/Library/Application Support/SourceTree/browser.plist")
-  raise IOError, "#{sourcetree_plist} does not exists." unless File.exist? sourcetree_plist
+class SourceTree < ::Alfred::Handler::Base
+  def initialize(alfred, opts = {})
+    super
+    @settings = {
+      :handler => 'SourceTree' ,
+      :expire  => 3600         ,
+    }.update(opts)
 
-  bookmarks_plist = Plist::parse_xml(
-    %x{plutil -convert xml1 -o - "#{sourcetree_plist}"})
-
-  last_obj = ""
-  bookmarks = []
-  bookmarks_plist["$objects"].each do |o|
-    if o.is_a?(String) && File.exist?(o)
-      if last_obj.is_a?(String)
-        bookmarks << { :name => last_obj, :path => o,}
-      else
-        bookmarks << { :name => File.basename(o), :path => o,}
-      end
-    end
-    last_obj = o
+    feedback.use_cache_file :expire => @settings[:expire]
   end
-  bookmarks
-end
 
-# (#
-# Feedback                                                                [[[1
-# #)
 
-def generate_feedback(alfred, query)
+  def generate_feedback
+    sourcetree_bookmarks.uniq {|b| b[:name] + b[:path]}.each do |b|
+      feedback.add_item({
+        :uid      => b[:path]          ,
+        :title    => b[:name]          ,
+        :subtitle => b[:path]          ,
+        :arg      => b[:path]          ,
+        :type     => 'file'            ,
+        :match?   => :all_title_match? ,
+      })
+    end
 
-  feedback = alfred.feedback
+    feedback.put_cached_feedback
+  end
 
-  sourcetree_bookmarks.uniq {|b| b[:name] + b[:path]}.each { |b|
-    feedback.add_item({
-      :uid      => b[:path]          ,
-      :title    => b[:name]          ,
-      :subtitle => b[:path]          ,
-      :arg      => b[:path]          ,
-      :type     => 'file'            ,
-      :match?   => :all_title_match? ,
-    })
-  }
 
-  feedback.put_cached_feedback
-  puts feedback.to_alfred(query)
+  def on_feedback
+    if !options.should_reload_cached_feedback and fb = feedback.get_cached_feedback
+      feedback.merge! fb
+    else
+      generate_feedback(alfred, query)
+    end
+  end
+
+
+  def on_action(arg)
+  end
+
+  def sourcetree_bookmarks
+
+    sourcetree_plist = File.expand_path(
+      "~/Library/Application Support/SourceTree/browser.plist")
+    raise IOError, "#{sourcetree_plist} does not exists." unless File.exist? sourcetree_plist
+
+    bookmarks_plist = Plist::parse_xml(
+      %x{plutil -convert xml1 -o - "#{sourcetree_plist}"})
+
+    last_obj = ""
+    bookmarks = []
+    bookmarks_plist["$objects"].each do |o|
+      if o.is_a?(String) && File.exist?(o)
+        if last_obj.is_a?(String)
+          bookmarks << { :name => last_obj, :path => o,}
+        else
+          bookmarks << { :name => File.basename(o), :path => o,}
+        end
+      end
+      last_obj = o
+    end
+    bookmarks
+  end
+
 end
 
 
 
 Alfred.with_friendly_error do |alfred|
   alfred.with_rescue_feedback = true
+  alfred.with_help_feedback = true
+  alfred.cached_feedback_reload_option[:use_reload_option] = true
+  alfred.cached_feedback_reload_option[:use_exclamation_mark] = true
 
-  alfred.with_cached_feedback do
-    use_cache_file :expire => 3600
-  end
-
-  is_refresh = false
-  if ARGV[0] == '!'
-    is_refresh = true
-    ARGV.shift
-  end
-
-  if !is_refresh and fb = alfred.feedback.get_cached_feedback
-    query = ARGV.join(" ").strip
-    puts fb.to_alfred(query)
-  else
-    query = ARGV.join(" ").strip
-    generate_feedback(alfred, query)
-  end
-
+  SourceTree.new(alfred).register
 end
 
-
 # (#
-# Modeline                                                                [[[1
+# Modeline                                                                ⟨⟨⟨1
 # #)
-# vim: set ft=ruby ts=2 sw=2 tw=78 fdm=marker fmr=[[[,]]] fdl=1 :
+# vim: set ft=ruby ts=2 sw=2 tw=78 fdm=marker fmr=⟨⟨⟨,⟩⟩⟩ fdl=1 :
