@@ -1,0 +1,10 @@
+---
+:id: me.zhaowu.sourcetree
+:help: 
+  - :kind: url
+    :title: Check the Homepage for usage help
+    :subtitle: http://zhaocai.github.io/alfred2-sourcetree-workflow/
+    :url: http://zhaocai.github.io/alfred2-top-workflow/
+  - :kind: file
+    :path: README.pdf
+

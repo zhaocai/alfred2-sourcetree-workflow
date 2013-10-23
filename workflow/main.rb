@@ -26,7 +26,7 @@ class SourceTree < ::Alfred::Handler::Base
     super
     @settings = {
       :handler => 'SourceTree' ,
-      :expire  => 3600         ,
+      :expire  => 7200         ,
     }.update(opts)
 
     feedback.use_cache_file :expire => @settings[:expire]
@@ -35,11 +35,16 @@ class SourceTree < ::Alfred::Handler::Base
 
   def generate_feedback
     sourcetree_bookmarks.uniq {|b| b[:name] + b[:path]}.each do |b|
+      arg = xml_builder(
+        :handler => @settings[:handler] ,
+        :path => b[:path]
+      )
+
       feedback.add_item({
         :uid      => b[:path]          ,
         :title    => b[:name]          ,
         :subtitle => b[:path]          ,
-        :arg      => b[:path]          ,
+        :arg      => arg               ,
         :type     => 'file'            ,
         :match?   => :all_title_match? ,
       })
@@ -53,13 +58,23 @@ class SourceTree < ::Alfred::Handler::Base
     if !options.should_reload_cached_feedback and fb = feedback.get_cached_feedback
       feedback.merge! fb
     else
-      generate_feedback(alfred, query)
+      generate_feedback
     end
   end
 
 
   def on_action(arg)
+
+    return unless action?(arg)
+
+    case options.modifier
+    when :command
+      Alfred::Util.reveal_in_finder(arg[:path])
+    when :none
+      Alfred::Util.open_with('SourceTree', arg[:path])
+    end
   end
+
 
   def sourcetree_bookmarks
 

@@ -1,5 +1,5 @@
 {
-    "version": 1.1,
+    "version": 1.2,
     "download_uri": "https://github.com/zhaocai/alfred2-sourcetree-workflow/raw/master/Source%20Tree.alfredworkflow",
-    "description": "initial working version"
+    "description": "update to alfred handler framework"
 }
