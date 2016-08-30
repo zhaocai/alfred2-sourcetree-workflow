@@ -23,3 +23,6 @@ PLATFORMS
 DEPENDENCIES
   alfred-workflow
   plist
+
+BUNDLED WITH
+   1.12.5
