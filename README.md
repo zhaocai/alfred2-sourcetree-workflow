@@ -2,7 +2,7 @@
 
 Alfred 2 Workflow to list, search, and open [Source Tree](http://www.sourcetreeapp.com/ "SourceTree") repositories in [Alfred](http://www.alfredapp.com/ "Alfred App - Productivity App for Mac OS X").
 
-![](https://raw.github.com/zhaocai/alfred2-sourcetree-workflow/master/screenshots/workflow.png)
+![](screenshots/workflow.png)
 
 ## Usage
 
@@ -26,7 +26,7 @@ Just type `-?`, `-h`, or `--help` after the keyword to show help.
 1. `alt` : Browser in Alfred
 
 
-![](https://raw.github.com/zhaocai/alfred2-sourcetree-workflow/master/screenshots/query.png)
+![](screenshots/query.png)
 
 ## Installation
 
